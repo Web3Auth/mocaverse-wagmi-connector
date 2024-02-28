@@ -1,0 +1,20 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "eslint.workingDirectories": [
+    {
+      "directory": "*",
+      "changeProcessCWD": true
+    },
+    {
+      "directory": "demos/*/*",
+      "changeProcessCWD": true
+    }
+  ],
+  "cSpell.words": [
+    "openlogin",
+    "tkey"
+  ],
+  "vue.codeActions.enabled": false
+}

@@ -1,0 +1,73 @@
+{
+  "name": "@web3auth/mocaverse-wagmi-connector",
+  "version": "0.1.0",
+  "description": "wagmi connector to connect with web3auth mocaverse embed sdk",
+  "main": "dist/mocaverseWagmiConnector.cjs.js",
+  "unpkg": "dist/mocaverseWagmiConnector.umd.min.js",
+  "jsdelivr": "dist/mocaverseWagmiConnector.umd.min.js",
+  "types": "dist/types/index.d.ts",
+  "repository": "https://github.com/Web3Auth/mocaverse-wagmi-connector",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/mocaverseWagmiConnector.esm.js",
+      "require": "./dist/mocaverseWagmiConnector.cjs.js"
+    }
+  },
+  "keywords": [],
+  "scripts": {
+    "dev": "torus-scripts start",
+    "build": "torus-scripts build",
+    "release": "torus-scripts release",
+    "lint": "eslint --fix 'src/**/*.ts'",
+    "prepack": "npm run build",
+    "pre-commit": "lint-staged --cwd ."
+  },
+  "dependencies": {
+    "@web3auth/mocaverse-embed": "^1.0.1-alpha.1",
+    "loglevel": "^1.8.1"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@toruslabs/config": "^2.0.2",
+    "@toruslabs/eslint-config-typescript": "^3.1.0",
+    "@toruslabs/torus-scripts": "^5.2.0",
+    "@types/node": "^20",
+    "@wagmi/core": "^2.6.5",
+    "@web3auth/base": "^8.0.0",
+    "changeset": "^0.2.6",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.56.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3",
+    "viem": "^2.7.11"
+  },
+  "peerDependencies": {
+    "@wagmi/core": "^2.x",
+    "viem": "^2.x"
+  },
+  "lint-staged": {
+    "!(*d).ts": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ]
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18.x",
+    "npm": ">=9.x"
+  }
+}
