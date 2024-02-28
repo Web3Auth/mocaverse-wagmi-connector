@@ -28,12 +28,12 @@ Checkout the official [Web3Auth Documentation](https://web3auth.io/docs) and [SD
 
 ## How to use
 
-Here is an example of a wagmi client using both the `MocaverseConnector` and the default `InjectedConnector` respectively.
+Here is an example of a wagmi client using the `MocaverseConnector`.
 
 ```js
 import { WagmiProvider, createConfig, http } from "wagmi";
 import { polygon, optimism, polygonMumbai } from "wagmi/chains";
-import {MocaverseConnector} from "@web3auth/mocaverse-wagmi-connector";
+import { MocaverseConnector } from "@web3auth/mocaverse-wagmi-connector";
 
 import { CHAIN_NAMESPACES, WEB3AUTH_NETWORK } from "@web3auth/base";
 
