@@ -1,6 +1,6 @@
 {
   "name": "@web3auth/mocaverse-wagmi-connector",
-  "version": "0.1.0",
+  "version": "1.0.1-alpha.1",
   "description": "wagmi connector to connect with web3auth mocaverse embed sdk",
   "main": "dist/mocaverseWagmiConnector.cjs.js",
   "unpkg": "dist/mocaverseWagmiConnector.umd.min.js",
