@@ -31,29 +31,46 @@ Checkout the official [Web3Auth Documentation](https://web3auth.io/docs) and [SD
 Here is an example of a wagmi client using both the `MocaverseConnector` and the default `InjectedConnector` respectively.
 
 ```js
-import { TorusConnector } from "@toruslabs/torus-wagmi-connector";
-import { chain, configureChains, createClient } from 'wagmi';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { publicProvider } from 'wagmi/providers/public';
+import { WagmiProvider, createConfig, http } from "wagmi";
+import { polygon, optimism, polygonMumbai } from "wagmi/chains";
+import {MocaverseConnector} from "@web3auth/mocaverse-wagmi-connector";
 
-const { chains, provider } = configureChains(
-  [chain.mainnet, chain.polygon],
-  [publicProvider()]
-);
+import { CHAIN_NAMESPACES, WEB3AUTH_NETWORK } from "@web3auth/base";
 
-const wagmiClient = createClient({
-  autoConnect: true,
+
+const web3AuthClientId =
+  "BANbxuTYFGeYi8HxUzaPQkvQlSAXiKRtUqb1vqsXbsZsZKrNr05PEPCM2J2PhUJZpIYl0XzQa6jxUjnYzSU9LXY";
+
+const chainConfig = {
+  chainNamespace: CHAIN_NAMESPACES.EIP155,
+  chainId: `0x${polygon.id.toString(16)}`,
+  rpcTarget: polygon.rpcUrls.default.http[0], // This is the public RPC we have added, please pass on your own endpoint while creating an app
+  displayName: polygon.name,
+  tickerName: polygon.nativeCurrency?.name,
+  ticker: polygon.nativeCurrency?.symbol,
+  blockExplorerUrl: polygon.blockExplorers?.default.url[0] as string,
+  logo: "https://cryptologos.cc/logos/polygon-matic-logo.png",
+};
+
+// Set up client
+const config = createConfig({
+  chains: [polygon, optimism, polygonMumbai],
+  transports: {
+    [polygon.id]: http(),
+    [optimism.id]: http(),
+    [polygonMumbai.id]: http(),
+  },
   connectors: [
-    new TorusConnector({ 
-      chains: chains,
-      options: {
-        chainId: "0x1",
-        host: "mainnet",
-      },
-    }),
-    new InjectedConnector({ chains }),
+    MocaverseConnector({
+      web3AuthClientId,
+      web3AuthNetwork: WEB3AUTH_NETWORK.SAPPHIRE_MAINNET,
+      initParams: {
+        buildEnv: "testing",
+        chainConfig,
+        enableLogging: true,
+      }
+    })
   ],
-  provider,
 });
 ```
 
