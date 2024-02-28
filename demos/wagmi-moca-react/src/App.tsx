@@ -8,7 +8,7 @@ import {MocaverseConnector} from "@web3auth/mocaverse-wagmi-connector";
 import { SendTransaction } from "./sendTransaction";
 import { SwitchChain } from "./switchNetwork";
 import { Balance } from "./balance";
-import { WriteContract } from "./writeContract";
+import { SignMessage } from "./signMessage";
 
 import "./App.css";
 import { CHAIN_NAMESPACES, WEB3AUTH_NETWORK } from "@web3auth/base";
@@ -70,8 +70,8 @@ function Profile() {
         </button>
         <SendTransaction />
         <Balance />
-        <WriteContract />
         <SwitchChain />
+        <SignMessage />
       </div>
     );
   } else {

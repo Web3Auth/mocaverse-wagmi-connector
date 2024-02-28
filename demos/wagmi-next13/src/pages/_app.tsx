@@ -1,5 +1,3 @@
-import "@/styles/globals.css";
-
 // WAGMI Libraries
 import { WagmiProvider, createConfig, http, useAccount, useConnect, useDisconnect } from "wagmi";
 import { coinbaseWallet, walletConnect } from "wagmi/connectors";
@@ -10,9 +8,11 @@ import {MocaverseConnector} from "@web3auth/mocaverse-wagmi-connector";
 import SendTransaction from "./_sendTransaction";
 import SwitchChain from "./_switchNetwork";
 import Balance from "./_balance";
-import WriteContract from "./_writeContract";
+import SignMessage from "./_signMessage";
 
 import { CHAIN_NAMESPACES, WEB3AUTH_NETWORK } from "@web3auth/base";
+
+import "@/styles/globals.css";
 
 const queryClient = new QueryClient() 
 
@@ -71,7 +71,7 @@ function Profile() {
         </button>
         <SendTransaction />
         <Balance />
-        <WriteContract />
+        <SignMessage />
         <SwitchChain />
       </div>
     );
